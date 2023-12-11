@@ -1,6 +1,7 @@
 import '../index.dart';
 
 part 'common.dart';
+
 part 'video.dart';
 
 class Api {
@@ -29,5 +30,6 @@ class Api {
   static Future<ApiCommonInfo> commonInfo() => _commonInfo();
 
   // video
-  static Future<List<ApiVideo>> videoFindVideo() => _videoFindVideo();
+  static Future<List<ApiVideo>> videoFindVideo(String videoId, String videoName) =>
+      _videoFindVideo(videoId, videoName);
 }

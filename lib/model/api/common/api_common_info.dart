@@ -16,9 +16,20 @@ class ApiCommonInfo {
         .map((e) => ApiModule.fromJson(e as Map<String, dynamic>))
         .toList();
 
+  static List<ApiCommonInfo> listFromJson(List<dynamic> json) {
+    return json
+        .map((e) => ApiCommonInfo.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   Map<String, dynamic> toJson() => <String, dynamic>{
         'lastAccess': lastAccess,
         'fileServerUrl': fileServerUrl,
         'moduleList': moduleList,
       };
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
 }

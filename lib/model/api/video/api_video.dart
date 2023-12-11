@@ -4,21 +4,32 @@ import 'package:json_annotation/json_annotation.dart';
 class ApiVideo {
   ApiVideo();
 
+  late String id;
   late String name;
   late String description;
   late String coverImg;
-  late num id;
 
   factory ApiVideo.fromJson(Map<String, dynamic> json) => ApiVideo()
+    ..id = json['id'] as String
     ..name = json['name'] as String
     ..description = json['description'] as String
-    ..coverImg = json['coverImg'] as String
-    ..id = json['id'] as num;
+    ..coverImg = json['coverImg'] as String;
+
+  static List<ApiVideo> listFromJson(List<dynamic> json) {
+    return json
+        .map((e) => ApiVideo.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
         'name': name,
         'description': description,
         'coverImg': coverImg,
-        'id': id,
       };
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
 }

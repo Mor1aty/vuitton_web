@@ -1,6 +1,5 @@
 {
-  "@ignore": false,
-  "id": "num",
+  "id": "String",
   "name": "String",
   "description": "String",
   "coverImg": "String"

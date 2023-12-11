@@ -13,6 +13,7 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
   final String fsServerUrl = Global.commonInfo.fileServerUrl;
   final TextEditingController _searchTextEditingController =
       TextEditingController();
+  String videoName = "";
 
   @override
   void initState() {
@@ -43,7 +44,9 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
               context: context,
               textEditingController: _searchTextEditingController,
               searchCallback: () {
-
+                setState(() {
+                  videoName = _searchTextEditingController.text;
+                });
               },
             ),
           ];
@@ -51,7 +54,7 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
         body: Padding(
           padding: const EdgeInsets.only(top: 8),
           child: FutureBuilder(
-            future: Api.videoFindVideo(),
+            future: Api.videoFindVideo("", videoName),
             builder:
                 (BuildContext context, AsyncSnapshot<List<ApiVideo>> snapshot) {
               if (snapshot.hasError || !snapshot.hasData) {
@@ -82,7 +85,8 @@ class _VideoPageState extends State<VideoPage> with TickerProviderStateMixin {
                       animationController?.forward();
                       return VerticalCardWidget(
                         callback: () {
-                          print(snapshot.data![index].name);
+                          Navigator.pushNamed(context, 'video/info',
+                              arguments: {'video': snapshot.data![index]});
                         },
                         animation: animation,
                         animationController: animationController!,

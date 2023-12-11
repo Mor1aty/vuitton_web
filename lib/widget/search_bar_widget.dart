@@ -56,19 +56,18 @@ class SearchBarWidget extends StatelessWidget {
                     onChanged: (String value) =>
                         {_clearVisibleNotifier.value = value.isNotEmpty},
                     decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.only(top: 5),
+                      contentPadding: const EdgeInsets.only(top: 4),
                       border: InputBorder.none,
                       hintText: '搜索',
                       suffixIcon: ValueListenableBuilder(
                         builder: (context, value, child) {
-                          return value
+                          return textEditingController.text.isNotEmpty
                               ? IconButton(
                                   onPressed: () {
                                     textEditingController.clear();
                                     _clearVisibleNotifier.value = false;
                                     searchCallback();
                                   },
-                                  padding: const EdgeInsets.only(top: -10),
                                   icon: const Icon(Icons.cancel,
                                       color: AppColor.important))
                               : const SizedBox();

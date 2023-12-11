@@ -1,6 +1,5 @@
 {
-  "@ignore": false,
-  "id": "num",
+  "id": "int",
   "name": "String",
   "path": "String",
   "imgUrl": "String"

@@ -14,3 +14,4 @@ export 'util.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:dio/dio.dart';
 export 'app_color.dart';
+export 'dart:convert';
